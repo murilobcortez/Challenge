@@ -1,0 +1,20 @@
+package com.challenge.shopping.fruits.data.datasource.local
+
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.challenge.shopping.fruits.data.model.FruitEntity
+
+@Database(
+    entities = [FruitEntity::class],
+    version = 1
+)
+
+@TypeConverters(ImageConverter::class)
+abstract class FruitsLocalDatabase: RoomDatabase() {
+    abstract val fruitsDao: FruitsLocalDataSource
+
+    companion object {
+        const val DB_NAME = "fruits.db"
+    }
+}

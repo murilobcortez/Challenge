@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Challenge</string>
+
+    //Fruit List Screen
+    <string name="fruit_list_screen_search_hint">Search...</string>
+    <string name="fruit_list_screen_search_close_hint">Clear search</string>
+    <string name="fruit_list_screen_tab_fruits">Fruits</string>
+    <string name="fruit_list_screen_tab_cart">Cart</string>
+    <string name="fruit_list_screen_no_favorite_results">No fruits added to cart yet.</string>
+    <string name="fruit_list_screen_no_search_results">Oops, there aren\'t any fruits available.</string>
+
+    //Fruit Detail Screen
+    <string name="fruit_detail_screen_fruit_image">Fruit image</string>
+    <string name="fruit_detail_screen_fruit_family">Family</string>
+    <string name="fruit_detail_screen_fruit_order">Order</string>
+    <string name="fruit_detail_screen_fruit_genus">Genus</string>
+    <string name="fruit_detail_screen_fruit_price">Price</string>
+    <string name="fruit_detail_screen_fruit_not_identified">Oops, fruit not identified. Try again.</string>
+    <string name="fruit_detail_screen_not_available">Not available</string>
+    <string name="fruit_detail_screen_go_back">Go back</string>
+    <string name="fruit_detail_screen_add_to_cart">Add to cart</string>
+    <string name="fruit_detail_screen_remove_from_cart">Remove from cart</string>
+
+    // Errors
+    <string name="error_disk_full">Oops, it seems your disk is full.</string>
+    <string name="error_unknown">Oops, something went wrong.</string>
+    <string name="error_request_timeout">The request timed out.</string>
+    <string name="error_no_internet">Couldn\'t reach server. Please check your internet connection.</string>
+    <string name="error_too_many_requests">Your quota seems to be exceeded</string>
+    <string name="error_serialization">Couldn\'t parse data.</string>
+</resources>
