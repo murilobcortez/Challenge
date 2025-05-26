@@ -20,6 +20,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    
+    sourceSets {
+        getByName("androidTest") {
+            assets.srcDirs("schemas")
+        }
+    }
 
     buildTypes {
         release {
@@ -30,13 +36,16 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
     }
@@ -54,6 +63,15 @@ tasks.withType<Test> {
     useJUnitPlatform()
     testLogging {
         events("passed", "skipped", "failed")
+    }
+}
+val composeVersion = "1.8.2"
+
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "androidx.compose.ui") {
+            useVersion(composeVersion)
+        }
     }
 }
 
