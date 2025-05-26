@@ -1,6 +1,8 @@
 package com.challenge.shopping.fruits.di
 
 import androidx.room.Room
+import com.challenge.shopping.fruits.common.data.AppConstants.AI_IMAGE_GENERATION_API_BASE_URL
+import com.challenge.shopping.fruits.common.data.AppConstants.FRUITS_API_BASE_URL
 import com.challenge.shopping.fruits.common.data.RetrofitFactory
 import com.challenge.shopping.fruits.domain.repository.FruitsRepository
 import com.challenge.shopping.fruits.presentation.fruitsdetail.FruitsDetailViewModel
@@ -18,12 +20,9 @@ import com.challenge.shopping.fruits.domain.usecase.GetFruitAiGeneratedImageUseC
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.IsFruitOnCartUseCase
 import com.challenge.shopping.fruits.presentation.SelectedFruitSharedViewModel
-import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-private const val FRUITS_API_BASE_URL = "https://www.fruityvice.com/api/"
-private const val AI_IMAGE_GENERATION_API_BASE_URL = "https://api.cloudflare.com/client/v4/"
 private val fruitRetrofit = RetrofitFactory.create(FRUITS_API_BASE_URL)
 private val fruitIaImageGenerationRetrofit = RetrofitFactory.create(AI_IMAGE_GENERATION_API_BASE_URL)
 
@@ -58,7 +57,7 @@ val domainModule = module {
 }
 
 val presentationModule = module {
-    viewModel { FruitsListViewModel(get(), get(), get()) }
+    viewModelOf(::FruitsListViewModel)
     viewModelOf(::FruitsDetailViewModel)
     viewModelOf(::SelectedFruitSharedViewModel)
 }

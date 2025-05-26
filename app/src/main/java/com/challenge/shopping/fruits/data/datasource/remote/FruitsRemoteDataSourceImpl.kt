@@ -3,16 +3,14 @@ package com.challenge.shopping.fruits.data.datasource.remote
 import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import com.challenge.shopping.fruits.common.data.AppConstants.AI_MODEL_NAME
+import com.challenge.shopping.fruits.common.data.AppConstants.API_TOKEN
 import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.common.domain.Result
 import com.challenge.shopping.fruits.data.datasource.remote.service.FruitAiImageGenerationApiService
 import com.challenge.shopping.fruits.data.datasource.remote.service.FruitsApiService
 import com.challenge.shopping.fruits.data.model.FruitAiImageGenerationRequest
 import com.challenge.shopping.fruits.data.model.FruitResponse
-
-//AI GENERATION IMAGE API
-private const val AI_MODEL_NAME = "@cf/bytedance/stable-diffusion-xl-lightning"
-private const val API_TOKEN = "FTZRFoBZtgEBiXvpWkhkYeqhKKDcJRB3VzWNht03"
 
 class FruitsRemoteDataSourceImpl(
     private val fruitsApiService: FruitsApiService,

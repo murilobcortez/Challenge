@@ -112,7 +112,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.sqlite.bundled)
 
-    // Testing (JUnit 5, Mockito, Turbine, Koin)
+    // Testing (JUnit 5, JUnit 4, Mockito, Turbine, Koin)
     testImplementation(libs.junit.jupiter.api)
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.junit.jupiter.params)

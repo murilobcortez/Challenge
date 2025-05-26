@@ -1,5 +1,6 @@
 package com.challenge.shopping.fruits.domain.usecase
 
+import androidx.compose.ui.graphics.ImageBitmap
 import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.common.domain.EmptyResult
 import com.challenge.shopping.fruits.domain.stub.TestStub
@@ -25,7 +26,8 @@ class AddFruitOnCartUseCaseTest {
     @Test
     fun `should return success when repository adds fruit successfully`() = runTest {
         // Given
-        val fruit = TestStub.generateFruit()
+        val fruitImage = mock<ImageBitmap>()
+        val fruit = TestStub.generateFruit(fruitImage)
         val expectedResult: EmptyResult<DataError.Local> = com.challenge.shopping.fruits.common.domain.Result.Success(Unit)
         whenever(repository.addFruitOnCart(fruit)).thenReturn(expectedResult)
 
@@ -39,7 +41,8 @@ class AddFruitOnCartUseCaseTest {
     @Test
     fun `should return disk full error when repository fails to add fruit`() = runTest {
         // Given
-        val fruit = TestStub.generateFruit()
+        val fruitImage = mock<ImageBitmap>()
+        val fruit = TestStub.generateFruit(fruitImage)
         val error = DataError.Local.DISK_FULL
         val expectedResult: EmptyResult<DataError.Local> = com.challenge.shopping.fruits.common.domain.Result.Error(error)
         whenever(repository.addFruitOnCart(fruit)).thenReturn(expectedResult)
