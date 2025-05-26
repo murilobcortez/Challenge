@@ -24,9 +24,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.challenge.R
@@ -88,10 +90,12 @@ fun ImageBackground(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ){
-                            CircularProgressIndicator(
+                            Image(
+                                painter = painterResource(R.drawable.ic_image_not_found),
+                                contentDescription = null,
                                 modifier = Modifier
-                                    .size(32.dp)
-                                    .align(Alignment.Center)
+                                    .size(64.dp)
+                                    .clip(RoundedCornerShape(8.dp))
                             )
                         }
                     } else {

@@ -1,8 +1,8 @@
 package com.challenge.shopping.fruits.presentation.fruitslist.components
 
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import com.challenge.shopping.fruits.domain.model.Fruit
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -25,7 +25,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -38,8 +37,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.challenge.R
+import com.challenge.shopping.fruits.domain.model.Fruit
+
 
 @Composable
 fun FruitList(
@@ -83,9 +86,9 @@ fun FruitList(
                         contentAlignment = Alignment.Center
                     ){
                         if (fruitItem.image != null) {
-                            if(fruitItem.image == ImageBitmap(1,1)){
+                            if(fruitItem.image.width == 1 && fruitItem.image.height == 1){
                                 Image(
-                                    imageVector = Icons.Default.Close,
+                                    painter = painterResource(R.drawable.ic_image_not_found),
                                     contentDescription = null,
                                     modifier = Modifier
                                         .size(64.dp)

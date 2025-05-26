@@ -50,77 +50,78 @@ fun FruitsDetailScreen(
     state: FruitsDetailState,
     onAction: (FruitsDetailAction) -> Unit
 ){
-    ImageBackground(
-        image = state.fruit?.image,
-        onBackClick = { onAction(FruitsDetailAction.OnBackClick) },
-        modifier = Modifier.fillMaxSize()
-    ){
-        if(state.fruit != null){
-            Column(
-                modifier = Modifier
-                    .widthIn(max = 700.dp)
-                    .fillMaxWidth()
-                    .padding(
-                        vertical = 16.dp,
-                        horizontal = 24.dp
-                    )
-                    .verticalScroll(rememberScrollState()),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = state.fruit.name,
-                    style = MaterialTheme.typography.headlineLarge,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(vertical = 8.dp)
-                )
+        ImageBackground(
+            image = state.fruit?.image,
+            onBackClick = { onAction(FruitsDetailAction.OnBackClick) },
+            modifier = Modifier.fillMaxSize()
+        ) {
+            if (state.fruit != null) {
                 Column(
                     modifier = Modifier
-                        .padding(top = 8.dp)
-                        .align(Alignment.CenterHorizontally),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                        .widthIn(max = 700.dp)
+                        .fillMaxWidth()
+                        .padding(
+                            vertical = 16.dp,
+                            horizontal = 24.dp
+                        )
+                        .verticalScroll(rememberScrollState()),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // Family
-                    state.fruit.family.let { family ->
-                        FruitDetailItem(
-                            titleText = stringResource(R.string.fruit_detail_screen_fruit_family),
-                            descriptionText = family
-                        )
+                    Text(
+                        text = state.fruit.name,
+                        style = MaterialTheme.typography.headlineLarge,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 8.dp)
+                            .align(Alignment.CenterHorizontally),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        // Family
+                        state.fruit.family.let { family ->
+                            FruitDetailItem(
+                                titleText = stringResource(R.string.fruit_detail_screen_fruit_family),
+                                descriptionText = family
+                            )
+                        }
+                        // Order
+                        state.fruit.order.let { order ->
+                            FruitDetailItem(
+                                titleText = stringResource(R.string.fruit_detail_screen_fruit_order),
+                                descriptionText = order
+                            )
+                        }
+                        //Genus
+                        state.fruit.genus.let { genus ->
+                            FruitDetailItem(
+                                titleText = stringResource(R.string.fruit_detail_screen_fruit_genus),
+                                descriptionText = genus
+                            )
+                        }
+                        //Price
+                        state.fruit.price.let { price ->
+                            FruitDetailItem(
+                                titleText = stringResource(R.string.fruit_detail_screen_fruit_price),
+                                descriptionText = price
+                            )
+                        }
                     }
-                    // Order
-                    state.fruit.order.let { order ->
-                        FruitDetailItem(
-                            titleText = stringResource(R.string.fruit_detail_screen_fruit_order),
-                            descriptionText = order
-                        )
-                    }
-                    //Genus
-                    state.fruit.genus.let { genus ->
-                        FruitDetailItem(
-                            titleText = stringResource(R.string.fruit_detail_screen_fruit_genus),
-                            descriptionText = genus
-                        )
-                    }
-                    //Price
-                    state.fruit.price.let { price ->
-                        FruitDetailItem(
-                            titleText = stringResource(R.string.fruit_detail_screen_fruit_price),
-                            descriptionText = price
-                        )
-                    }
+                    Spacer(modifier = Modifier.weight(1f))
+                    AddToCartButton(
+                        isAddedToCart = state.isAddedToCart,
+                        onClick = { onAction(FruitsDetailAction.OnAddToCartClick) }
+                    )
                 }
-                Spacer(modifier = Modifier.weight(1f))
-                AddToCartButton(
-                    isAddedToCart = state.isAddedToCart,
-                    onClick = { onAction(FruitsDetailAction.OnAddToCartClick) }
+            }
+            else {
+                Text(
+                    text = stringResource(R.string.fruit_detail_screen_fruit_not_identified),
+                    style = MaterialTheme.typography.headlineLarge,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(16.dp)
                 )
             }
-        } else {
-            Text(
-                text = stringResource(R.string.fruit_detail_screen_fruit_not_identified),
-                style = MaterialTheme.typography.headlineLarge,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
         }
-    }
 }

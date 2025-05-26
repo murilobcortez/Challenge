@@ -1,5 +1,6 @@
 package com.challenge.shopping.fruits.presentation.fruitsdetail
 
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope

@@ -1,5 +1,6 @@
 [versions]
 agp = "8.9.1"
+composeVersion = "1.8.2"
 converterKotlinxSerialization = "2.11.0"
 junitJupiterApi = "5.8.0"
 junitJupiterEngine = "5.8.0"
@@ -30,6 +31,7 @@ uiTestJunit4 = "1.8.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "composeVersion" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
