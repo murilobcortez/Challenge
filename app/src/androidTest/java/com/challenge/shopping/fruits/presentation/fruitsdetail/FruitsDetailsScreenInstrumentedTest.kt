@@ -18,11 +18,13 @@ class FruitsDetailScreenInstrumentedTest {
 
     @Test
     fun fruitDetailScreen_showsFruitDetails_whenFruitIsPresent() {
+        // Given
         val fruit = TestStub.generateFruit()
         val state = FruitsDetailState(fruit = fruit, isAddedToCart = false)
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val addToCartText = context.getString(R.string.fruit_detail_screen_add_to_cart)
 
+        // When
         composeTestRule.setContent {
             FruitsDetailScreen(
                 state = state,
@@ -30,25 +32,26 @@ class FruitsDetailScreenInstrumentedTest {
             )
         }
 
-        // Assert that the fruit name and details are displayed
+        // Then
         composeTestRule.onNodeWithText("Banana").assertIsDisplayed()
         composeTestRule.onNodeWithText("Musaceae").assertIsDisplayed()
         composeTestRule.onNodeWithText("Zingiberales").assertIsDisplayed()
         composeTestRule.onNodeWithText("Musa").assertIsDisplayed()
         composeTestRule.onNodeWithText("$1.99").assertIsDisplayed()
 
-        // Assert that the Add to Cart button is displayed
         composeTestRule.onNodeWithText(addToCartText).assertIsDisplayed()
     }
 
     @Test
     fun fruitDetailScreen_showsNotIdentifiedText_whenFruitIsNull() {
+        // Given
         val state = FruitsDetailState(fruit = null, isAddedToCart = false)
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val fruitNotIdentifiedText = context.getString(
             R.string.fruit_detail_screen_fruit_not_identified
         )
 
+        // When
         composeTestRule.setContent {
             FruitsDetailScreen(
                 state = state,
@@ -56,7 +59,7 @@ class FruitsDetailScreenInstrumentedTest {
             )
         }
 
-        // Assert that the "not identified" message is displayed
+        // Then
         composeTestRule.onNodeWithText(fruitNotIdentifiedText).assertIsDisplayed()
     }
 }
