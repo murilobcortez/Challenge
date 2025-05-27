@@ -22,9 +22,11 @@ Para isso, foi desenvolvida uma listagem de itens com as imagens geradas por IA 
 A tab "Fruits" (Listagem de Frutas) recebe lista de frutas de endpoint externo e grava na memória.
 A tab "Cart" (Listagem do Carrinho) exibe os itens salvos de forma local.
 
-
-
-
+ <p align="center">
+  <img alt="Listagem de Frutas" src="images/ListagemdeFrutas.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="NoteAddEditScreen" src="images/DetalhesdeFruta.png" width="45%">
+</p>
 
 ---
 
