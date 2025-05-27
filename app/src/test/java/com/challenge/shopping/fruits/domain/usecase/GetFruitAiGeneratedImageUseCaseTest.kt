@@ -15,12 +15,12 @@ import kotlinx.coroutines.runBlocking
 class GetFruitAiGeneratedImageUseCaseTest {
 
     private lateinit var repository: FruitsRepository
-    private lateinit var useCase: GetFruitAiGeneratedImageUseCase
+    private lateinit var useCase: GetFruitImageUseCase
 
     @BeforeEach
     fun setUp() {
         repository = mock()
-        useCase = GetFruitAiGeneratedImageUseCase(repository)
+        useCase = GetFruitImageUseCase(repository)
     }
 
     @Test

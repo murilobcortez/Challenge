@@ -2,7 +2,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.domain.model.Fruit
 import com.challenge.shopping.fruits.domain.usecase.GetAllFruitsUseCase
-import com.challenge.shopping.fruits.domain.usecase.GetFruitAiGeneratedImageUseCase
+import com.challenge.shopping.fruits.domain.usecase.GetFruitImageUseCase
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
 import com.challenge.shopping.fruits.presentation.fruitslist.FruitsListViewModel
 import com.challenge.shopping.fruits.common.domain.Result
@@ -25,14 +25,14 @@ class FruitsListViewModelMockitoTest {
 
     private lateinit var getAllFruitsUseCase: GetAllFruitsUseCase
     private lateinit var getFruitsOnCartUseCase: GetFruitsOnCartUseCase
-    private lateinit var getFruitAiGeneratedImageUseCase: GetFruitAiGeneratedImageUseCase
+    private lateinit var getFruitImageUseCase: GetFruitImageUseCase
 
     @BeforeEach
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         getAllFruitsUseCase = mock()
         getFruitsOnCartUseCase = mock()
-        getFruitAiGeneratedImageUseCase = mock()
+        getFruitImageUseCase = mock()
     }
 
     @AfterEach
@@ -44,7 +44,7 @@ class FruitsListViewModelMockitoTest {
         FruitsListViewModel(
             getAllFruitsUseCase,
             getFruitsOnCartUseCase,
-            getFruitAiGeneratedImageUseCase
+            getFruitImageUseCase
         )
 
     @Test
@@ -69,7 +69,7 @@ class FruitsListViewModelMockitoTest {
         val fruits = TestStub.generateFruitsList(mockImageBitmap)
         whenever(getFruitsOnCartUseCase.invoke()).thenReturn(flowOf(emptyList()))
         whenever(getAllFruitsUseCase.invoke()).thenReturn(Result.Success(fruits))
-        whenever(getFruitAiGeneratedImageUseCase.invoke(any())).thenReturn(Result.Success(mockImageBitmap))
+        whenever(getFruitImageUseCase.invoke(any())).thenReturn(Result.Success(mockImageBitmap))
         val viewModel = createViewModel()
 
         // When

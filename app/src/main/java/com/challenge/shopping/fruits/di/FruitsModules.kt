@@ -16,22 +16,24 @@ import com.challenge.shopping.fruits.data.repository.FruitsRepositoryImpl
 import com.challenge.shopping.fruits.domain.usecase.AddFruitOnCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.DeleteFruitFromCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.GetAllFruitsUseCase
-import com.challenge.shopping.fruits.domain.usecase.GetFruitAiGeneratedImageUseCase
+import com.challenge.shopping.fruits.domain.usecase.GetFruitImageUseCase
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.IsFruitOnCartUseCase
 import com.challenge.shopping.fruits.presentation.SelectedFruitSharedViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.dsl.viewModelOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-private val fruitRetrofit = RetrofitFactory.create(FRUITS_API_BASE_URL)
-private val fruitIaImageGenerationRetrofit = RetrofitFactory.create(FRUIT_IMAGE_API_BASE_URL)
+private fun provideRetrofit(baseUrl: String) = RetrofitFactory.create(baseUrl)
 
 val dataModule = module {
     // Remote
-    single { fruitRetrofit.create(FruitsApiService::class.java) }
-    single { fruitIaImageGenerationRetrofit.create(FruitImageApiService::class.java) }
+    single(named("FruitsApi")) { provideRetrofit(FRUITS_API_BASE_URL) }
+    single { get<retrofit2.Retrofit>(named("FruitsApi")).create(FruitsApiService::class.java) }
+    single(named("FruitImageApi")) { provideRetrofit(FRUIT_IMAGE_API_BASE_URL) }
+    single { get<retrofit2.Retrofit>(named("FruitImageApi")).create(FruitImageApiService::class.java) }
     single<FruitsRemoteDataSource> { FruitsRemoteDataSourceImpl(get(), get()) }
     single<FruitsRepository> { FruitsRepositoryImpl(get(), get()) }
 
@@ -49,7 +51,7 @@ val dataModule = module {
 val domainModule = module {
     // Remote
     factory { GetAllFruitsUseCase(get()) }
-    factory { GetFruitAiGeneratedImageUseCase(get()) }
+    factory { GetFruitImageUseCase(get()) }
 
     // Local
     factory { GetFruitsOnCartUseCase(get()) }
@@ -60,6 +62,7 @@ val domainModule = module {
 
 val presentationModule = module {
     single<CoroutineDispatcher> { Dispatchers.IO }
+
     viewModelOf(::FruitsListViewModel)
     viewModelOf(::FruitsDetailViewModel)
     viewModelOf(::SelectedFruitSharedViewModel)

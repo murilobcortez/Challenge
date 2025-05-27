@@ -12,7 +12,6 @@ import retrofit2.http.POST
 
 const val FRUIT_IMAGE_ENDPOINT = "accounts/$ACCOUNT_ID/ai/run/$AI_MODEL_NAME"
 
-
 interface FruitImageApiService {
     @POST(FRUIT_IMAGE_ENDPOINT)
     @Headers("Content-Type: application/json")

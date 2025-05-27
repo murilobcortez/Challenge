@@ -8,6 +8,6 @@ class DeleteFruitFromCartUseCase(
     private val repository: FruitsRepository
 ) {
     suspend operator fun invoke(id: Int): EmptyResult<DataError.Local>{
-        return repository.deleteFruitFromCart(id)
+        return repository.deleteFruitFromCartById(id)
     }
 }

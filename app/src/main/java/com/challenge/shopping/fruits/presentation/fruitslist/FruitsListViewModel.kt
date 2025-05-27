@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.challenge.shopping.fruits.common.domain.onError
 import com.challenge.shopping.fruits.common.domain.onSuccess
 import com.challenge.shopping.fruits.common.presentation.toUiText
-import com.challenge.shopping.fruits.domain.usecase.GetFruitAiGeneratedImageUseCase
+import com.challenge.shopping.fruits.domain.usecase.GetFruitImageUseCase
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 class FruitsListViewModel(
     private val getAllFruitsUseCase: GetAllFruitsUseCase,
     private val getFruitsOnCartUseCase: GetFruitsOnCartUseCase,
-    private val getFruitAiGeneratedImageUseCase: GetFruitAiGeneratedImageUseCase,
+    private val getFruitImageUseCase: GetFruitImageUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
@@ -91,7 +91,7 @@ class FruitsListViewModel(
     fun fetchFruitsImages(fruitsList : List<Fruit>){
        fruitsList.forEach { fruit ->
             viewModelScope.launch(dispatcher) {
-                getFruitAiGeneratedImageUseCase(fruit.name)
+                getFruitImageUseCase(fruit.name)
                     .onSuccess { fruitImage ->
                         _state.update { currentState ->
 

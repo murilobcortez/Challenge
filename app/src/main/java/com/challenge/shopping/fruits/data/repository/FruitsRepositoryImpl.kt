@@ -8,6 +8,7 @@ import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.common.domain.EmptyResult
 import com.challenge.shopping.fruits.common.domain.Result
 import com.challenge.shopping.fruits.common.domain.map
+import com.challenge.shopping.fruits.common.utils.emptyImageBitmap
 import com.challenge.shopping.fruits.data.datasource.local.FruitsLocalDataSource
 import com.challenge.shopping.fruits.data.datasource.remote.FruitsRemoteDataSource
 import com.challenge.shopping.fruits.data.mappers.toFruit
@@ -52,8 +53,6 @@ class FruitsRepositoryImpl(
         val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
         return bitmap?.asImageBitmap() ?: emptyImageBitmap()
     }
-
-    private fun emptyImageBitmap() = ImageBitmap(1, 1)
 
     // Local
     override fun getAllFruitsOnCart(): Flow<List<Fruit>> {
