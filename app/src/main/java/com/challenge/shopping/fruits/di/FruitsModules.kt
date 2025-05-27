@@ -20,6 +20,8 @@ import com.challenge.shopping.fruits.domain.usecase.GetFruitAiGeneratedImageUseC
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.IsFruitOnCartUseCase
 import com.challenge.shopping.fruits.presentation.SelectedFruitSharedViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
@@ -57,6 +59,7 @@ val domainModule = module {
 }
 
 val presentationModule = module {
+    single<CoroutineDispatcher> { Dispatchers.IO }
     viewModelOf(::FruitsListViewModel)
     viewModelOf(::FruitsDetailViewModel)
     viewModelOf(::SelectedFruitSharedViewModel)

@@ -10,6 +10,8 @@ import com.challenge.shopping.fruits.common.domain.onSuccess
 import com.challenge.shopping.fruits.common.presentation.toUiText
 import com.challenge.shopping.fruits.domain.usecase.GetFruitAiGeneratedImageUseCase
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +23,8 @@ import kotlinx.coroutines.launch
 class FruitsListViewModel(
     private val getAllFruitsUseCase: GetAllFruitsUseCase,
     private val getFruitsOnCartUseCase: GetFruitsOnCartUseCase,
-    private val getFruitAiGeneratedImageUseCase: GetFruitAiGeneratedImageUseCase
+    private val getFruitAiGeneratedImageUseCase: GetFruitAiGeneratedImageUseCase,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
     private var cachedFruits = emptyList<Fruit>()
@@ -60,7 +63,7 @@ class FruitsListViewModel(
                 isLoading = true
             )
         }
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             getAllFruitsUseCase()
                 .onSuccess { fruitsList ->
                     cachedFruits = fruitsList
@@ -87,7 +90,7 @@ class FruitsListViewModel(
 
     fun fetchFruitsImages(fruitsList : List<Fruit>){
        fruitsList.forEach { fruit ->
-            viewModelScope.launch {
+            viewModelScope.launch(dispatcher) {
                 getFruitAiGeneratedImageUseCase(fruit.name)
                     .onSuccess { fruitImage ->
                         _state.update { currentState ->

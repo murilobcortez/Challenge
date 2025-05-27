@@ -1,6 +1,5 @@
 package com.challenge.shopping.fruits.presentation.fruitsdetail
 
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
@@ -9,6 +8,8 @@ import com.challenge.shopping.app.Route
 import com.challenge.shopping.fruits.domain.usecase.AddFruitOnCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.DeleteFruitFromCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.IsFruitOnCartUseCase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -20,6 +21,7 @@ class FruitsDetailViewModel(
     private val deleteFruitFromCartUseCase: DeleteFruitFromCartUseCase,
     private val addFruitOnCartUseCase: AddFruitOnCartUseCase,
     private val isFruitOnCartUseCase: IsFruitOnCartUseCase,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -47,7 +49,7 @@ class FruitsDetailViewModel(
     }
 
     private fun handleAddOrRemoveFromCart() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             if (state.value.isAddedToCart) {
                 deleteFruitFromCartUseCase(fruitId)
             } else {
