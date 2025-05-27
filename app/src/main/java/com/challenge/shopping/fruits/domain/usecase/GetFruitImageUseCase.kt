@@ -9,6 +9,6 @@ class GetFruitImageUseCase(
     private val repository: FruitsRepository
 ) {
     suspend operator fun invoke(fruitName: String): Result<ImageBitmap, DataError> {
-        return repository.generateFruitImageByName(fruitName)
+        return repository.getFruitImageByName(fruitName)
     }
 }

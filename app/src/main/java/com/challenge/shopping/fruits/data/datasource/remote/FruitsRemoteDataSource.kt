@@ -6,5 +6,5 @@ import com.challenge.shopping.fruits.data.model.FruitResponse
 
 interface FruitsRemoteDataSource {
     suspend fun getAllFruits(): Result<List<FruitResponse>, DataError.Remote>
-    suspend fun generateFruitImageByName(fruitName: String): Result<ByteArray, DataError>
+    suspend fun getFruitImageByName(fruitName: String): Result<ByteArray, DataError>
 }

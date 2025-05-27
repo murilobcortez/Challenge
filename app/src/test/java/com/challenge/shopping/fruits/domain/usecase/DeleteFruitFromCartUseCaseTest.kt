@@ -31,7 +31,7 @@ class DeleteFruitFromCartUseCaseTest {
         useCase.invoke(fruitId)
 
         // Then
-        verify(repository).deleteFruitFromCart(fruitId)
+        verify(repository).deleteFruitFromCartById(fruitId)
     }
 
     @Test
@@ -40,7 +40,7 @@ class DeleteFruitFromCartUseCaseTest {
         val fruitId = 1
         val error = DataError.Local.UNKNOWN
         val expectedResult: EmptyResult<DataError.Local> = com.challenge.shopping.fruits.common.domain.Result.Error(error)
-        whenever(repository.deleteFruitFromCart(fruitId)).thenReturn(expectedResult)
+        whenever(repository.deleteFruitFromCartById(fruitId)).thenReturn(expectedResult)
 
         // When
         val result = useCase.invoke(fruitId)

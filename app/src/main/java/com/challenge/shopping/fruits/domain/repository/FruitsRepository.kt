@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface FruitsRepository {
     // Remote
     suspend fun getAllFruits(): Result<List<Fruit>, DataError>
-    suspend fun generateFruitImageByName(fruitName: String): Result<ImageBitmap, DataError>
+    suspend fun getFruitImageByName(fruitName: String): Result<ImageBitmap, DataError>
 
     // Local
     fun getAllFruitsOnCart(): Flow<List<Fruit>>

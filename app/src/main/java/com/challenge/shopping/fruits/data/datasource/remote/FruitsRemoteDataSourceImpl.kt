@@ -35,7 +35,7 @@ class FruitsRemoteDataSourceImpl(
         }
     }
 
-    override suspend fun generateFruitImageByName(fruitName: String): Result<ByteArray, DataError.Remote> {
+    override suspend fun getFruitImageByName(fruitName: String): Result<ByteArray, DataError.Remote> {
         val prompt = "A $fruitName on a basket, vibrant colors"
         val requestBody = FruitGenerateImageRequest(
             prompt = prompt,

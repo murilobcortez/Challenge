@@ -28,7 +28,7 @@ class GetFruitAiGeneratedImageUseCaseTest {
         // Given
         val fruitName = "Apple"
         val expectedImage: ImageBitmap = mock()
-        whenever(repository.getFruitAiGeneratedImage(fruitName))
+        whenever(repository.getFruitImageByName(fruitName))
             .thenReturn(Result.Success(expectedImage))
 
         // When
@@ -44,7 +44,7 @@ class GetFruitAiGeneratedImageUseCaseTest {
         // Given
         val error = DataError.Remote.REQUEST_TIMEOUT
         val fruitName = "Banana"
-        whenever(repository.getFruitAiGeneratedImage(fruitName)).thenReturn(Result.Error(error))
+        whenever(repository.getFruitImageByName(fruitName)).thenReturn(Result.Error(error))
 
         // When
         val result = useCase.invoke(fruitName)

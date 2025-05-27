@@ -36,8 +36,8 @@ class FruitsRepositoryImpl(
             }
     }
 
-    override suspend fun generateFruitImageByName(fruitName: String): Result<ImageBitmap, DataError> {
-        val result = remoteDataSource.generateFruitImageByName(fruitName)
+    override suspend fun getFruitImageByName(fruitName: String): Result<ImageBitmap, DataError> {
+        val result = remoteDataSource.getFruitImageByName(fruitName)
         return when (result) {
             is Result.Success -> {
                 val imageBitmap = bytesToImageBitmapOrEmpty(result.data)
