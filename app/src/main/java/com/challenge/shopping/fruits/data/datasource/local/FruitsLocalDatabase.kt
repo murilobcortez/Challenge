@@ -13,7 +13,7 @@ import com.challenge.shopping.fruits.data.model.FruitEntity
 
 @TypeConverters(ImageConverter::class)
 abstract class FruitsLocalDatabase: RoomDatabase() {
-    abstract val fruitsDao: FruitsLocalDataSource
+    abstract fun fruitsDao(): FruitsLocalDataSource
 
     companion object {
         const val DB_NAME = FRUITS_DATABASE_NAME

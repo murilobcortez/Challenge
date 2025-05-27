@@ -2,7 +2,7 @@ import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.common.domain.Result
 import com.challenge.shopping.fruits.data.datasource.local.FruitsLocalDataSource
 import com.challenge.shopping.fruits.data.datasource.remote.FruitsRemoteDataSourceImpl
-import com.challenge.shopping.fruits.data.datasource.remote.service.FruitAiImageGenerationApiService
+import com.challenge.shopping.fruits.data.datasource.remote.service.FruitImageApiService
 import com.challenge.shopping.fruits.data.datasource.remote.service.FruitsApiService
 import com.challenge.shopping.fruits.data.repository.FruitsRepositoryImpl
 import com.challenge.shopping.fruits.data.repository.mock.FruitsApiServiceMock
@@ -17,11 +17,11 @@ class FruitsRepositoryIntegrationTest {
 
     private fun createRepository(
         fruitsApiService: FruitsApiService = mock(),
-        fruitAiImageGenerationApiService: FruitAiImageGenerationApiService = mock(),
+        fruitImageApiService: FruitImageApiService = mock(),
         localDataSource: FruitsLocalDataSource = mock()
     ) = FruitsRepositoryImpl(
         localDataSource, FruitsRemoteDataSourceImpl(
-            fruitsApiService, fruitAiImageGenerationApiService
+            fruitsApiService, fruitImageApiService
         )
     )
 

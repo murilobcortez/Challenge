@@ -14,7 +14,7 @@ object RetrofitFactory {
     fun create(
         baseUrl: String
     ): Retrofit {
-        // Configuração do OkHttpClient com timeout e logging
+
         val logging = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -32,7 +32,6 @@ object RetrofitFactory {
             })
             .build()
 
-        // Configuração do converter kotlinx-serialization
         val contentType = "application/json".toMediaType()
         val json = Json { ignoreUnknownKeys = true }
 

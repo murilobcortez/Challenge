@@ -10,14 +10,11 @@ import kotlinx.coroutines.flow.Flow
 interface FruitsLocalDataSource {
 
     @Query("SELECT * FROM FruitEntity")
-    fun getFruitsOnCart(): Flow<List<FruitEntity>>
-
-    @Query("SELECT * FROM FruitEntity WHERE id = :id")
-    suspend fun getFruitOnCart(id: String): FruitEntity?
+    fun getAllFruits(): Flow<List<FruitEntity>>
 
     @Upsert
-    suspend fun upsertFruitOnCart(fruitEntity: FruitEntity)
+    suspend fun upsertFruit(fruitEntity: FruitEntity)
 
     @Query("DELETE FROM FruitEntity WHERE id = :id")
-    suspend fun deleteFruitFromCart(id: Int)
+    suspend fun deleteFruitById(id: Int)
 }

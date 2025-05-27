@@ -9,12 +9,11 @@ import java.text.NumberFormat
 import java.util.Locale
 import kotlin.random.Random
 
-
 fun FruitResponse.toFruit(): Fruit {
     return Fruit(
         id = id,
         name = name,
-        image = image,
+        image = null,
         family = family.orEmpty(),
         order = order.orEmpty(),
         genus = genus.orEmpty(),
@@ -46,10 +45,12 @@ fun Fruit.toFruitEntity(): FruitEntity {
     )
 }
 
-private fun generateRandomPrice(): String {
-        val priceUpperLimit = 30
-        val priceGenerated = Random.nextInt(priceUpperLimit)
-        val formattedPrice = NumberFormat.getCurrencyInstance(Locale.US)
-
-        return formattedPrice.format(priceGenerated)
+private fun generateRandomPrice(
+    minimumPrice: Int = 1,
+    maximumPrice: Int = 30,
+    locale: Locale = Locale.US
+): String {
+    val priceGenerated = Random.nextInt(from = minimumPrice, until = maximumPrice)
+    val priceCurrency = NumberFormat.getCurrencyInstance(locale)
+    return priceCurrency.format(priceGenerated)
 }

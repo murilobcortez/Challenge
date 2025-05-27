@@ -10,6 +10,6 @@ class GetFruitAiGeneratedImageUseCase(
     private val repository: FruitsRepository
 ) {
     suspend operator fun invoke(fruitName: String): Result<ImageBitmap, DataError> {
-        return repository.getFruitAiGeneratedImage(fruitName)
+        return repository.postGenerateFruitImage(fruitName)
     }
 }

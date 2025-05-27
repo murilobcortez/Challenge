@@ -1,6 +1,8 @@
 package com.challenge.shopping.fruits.data.repository
 
+import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.sqlite.SQLiteException
 import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.common.domain.EmptyResult
@@ -33,14 +35,30 @@ class FruitsRepositoryImpl(
             }
     }
 
-    override suspend fun getFruitAiGeneratedImage(fruitName: String): Result<ImageBitmap, DataError> {
-        return remoteDataSource.getFruitAiGeneratedImage(fruitName)
+    override suspend fun generateFruitImageByName(fruitName: String): Result<ImageBitmap, DataError> {
+        val result = remoteDataSource.generateFruitImageByName(fruitName)
+        return when (result) {
+            is Result.Success -> {
+                val imageBitmap = bytesToImageBitmapOrEmpty(result.data)
+                Result.Success(imageBitmap)
+            }
+            is Result.Error -> Result.Error(result.error)
+        }
     }
+
+    private fun bytesToImageBitmapOrEmpty(bytes: ByteArray?): ImageBitmap {
+        if (bytes == null) return emptyImageBitmap()
+
+        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        return bitmap?.asImageBitmap() ?: emptyImageBitmap()
+    }
+
+    private fun emptyImageBitmap() = ImageBitmap(1, 1)
 
     // Local
     override fun getAllFruitsOnCart(): Flow<List<Fruit>> {
         return localDataSource
-            .getFruitsOnCart()
+            .getAllFruits()
             .map { fruitEntities ->
                 fruitEntities.map {
                     it.toFruit()
@@ -50,7 +68,7 @@ class FruitsRepositoryImpl(
 
     override suspend fun addFruitOnCart(fruit: Fruit): EmptyResult<DataError.Local> {
         return try {
-            localDataSource.upsertFruitOnCart(
+            localDataSource.upsertFruit(
                 fruit.toFruitEntity()
             )
             Result.Success(Unit)
@@ -59,9 +77,9 @@ class FruitsRepositoryImpl(
         }
     }
 
-    override suspend fun deleteFruitFromCart(id: Int): EmptyResult<DataError.Local> {
+    override suspend fun deleteFruitFromCartById(id: Int): EmptyResult<DataError.Local> {
         return try {
-            localDataSource.deleteFruitFromCart(id)
+            localDataSource.deleteFruitById(id)
             Result.Success(Unit)
         } catch (e: SQLiteException) {
             Result.Error(DataError.Local.UNKNOWN)
@@ -70,7 +88,7 @@ class FruitsRepositoryImpl(
 
     override fun isFruitOnCart(id: Int): Flow<Boolean> {
         return localDataSource
-            .getFruitsOnCart()
+            .getAllFruits()
             .map { fruitEntities ->
                 fruitEntities.any { it.id == id }
             }

@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.Flow
 interface FruitsRepository {
     // Remote
     suspend fun getAllFruits(): Result<List<Fruit>, DataError>
-    suspend fun getFruitAiGeneratedImage(fruitName: String): Result<ImageBitmap, DataError>
+    suspend fun generateFruitImageByName(fruitName: String): Result<ImageBitmap, DataError>
 
     // Local
     fun getAllFruitsOnCart(): Flow<List<Fruit>>
     suspend fun addFruitOnCart(fruit: Fruit): EmptyResult<DataError.Local>
-    suspend fun deleteFruitFromCart(id: Int): EmptyResult<DataError.Local>
+    suspend fun deleteFruitFromCartById(id: Int): EmptyResult<DataError.Local>
     fun isFruitOnCart(id: Int): Flow<Boolean>
 }

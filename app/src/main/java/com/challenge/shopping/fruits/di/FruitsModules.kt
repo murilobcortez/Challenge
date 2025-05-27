@@ -1,7 +1,7 @@
 package com.challenge.shopping.fruits.di
 
 import androidx.room.Room
-import com.challenge.shopping.fruits.common.data.AppConstants.AI_IMAGE_GENERATION_API_BASE_URL
+import com.challenge.shopping.fruits.common.data.AppConstants.FRUIT_IMAGE_API_BASE_URL
 import com.challenge.shopping.fruits.common.data.AppConstants.FRUITS_API_BASE_URL
 import com.challenge.shopping.fruits.common.data.RetrofitFactory
 import com.challenge.shopping.fruits.domain.repository.FruitsRepository
@@ -10,7 +10,7 @@ import com.challenge.shopping.fruits.presentation.fruitslist.FruitsListViewModel
 import com.challenge.shopping.fruits.data.datasource.local.FruitsLocalDatabase
 import com.challenge.shopping.fruits.data.datasource.remote.FruitsRemoteDataSource
 import com.challenge.shopping.fruits.data.datasource.remote.FruitsRemoteDataSourceImpl
-import com.challenge.shopping.fruits.data.datasource.remote.service.FruitAiImageGenerationApiService
+import com.challenge.shopping.fruits.data.datasource.remote.service.FruitImageApiService
 import com.challenge.shopping.fruits.data.datasource.remote.service.FruitsApiService
 import com.challenge.shopping.fruits.data.repository.FruitsRepositoryImpl
 import com.challenge.shopping.fruits.domain.usecase.AddFruitOnCartUseCase
@@ -26,12 +26,12 @@ import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 private val fruitRetrofit = RetrofitFactory.create(FRUITS_API_BASE_URL)
-private val fruitIaImageGenerationRetrofit = RetrofitFactory.create(AI_IMAGE_GENERATION_API_BASE_URL)
+private val fruitIaImageGenerationRetrofit = RetrofitFactory.create(FRUIT_IMAGE_API_BASE_URL)
 
 val dataModule = module {
     // Remote
     single { fruitRetrofit.create(FruitsApiService::class.java) }
-    single { fruitIaImageGenerationRetrofit.create(FruitAiImageGenerationApiService::class.java) }
+    single { fruitIaImageGenerationRetrofit.create(FruitImageApiService::class.java) }
     single<FruitsRemoteDataSource> { FruitsRemoteDataSourceImpl(get(), get()) }
     single<FruitsRepository> { FruitsRepositoryImpl(get(), get()) }
 
@@ -43,7 +43,7 @@ val dataModule = module {
             FruitsLocalDatabase.DB_NAME
         ).build()
     }
-    single { get<FruitsLocalDatabase>().fruitsDao }
+    single { get<FruitsLocalDatabase>().fruitsDao() }
 }
 
 val domainModule = module {
