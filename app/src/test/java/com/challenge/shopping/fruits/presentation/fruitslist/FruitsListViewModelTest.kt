@@ -74,7 +74,7 @@ class FruitsListViewModelTest {
         val viewModel = createViewModel()
 
         // When
-        viewModel.fetchFruits()
+        viewModel.getFruits()
         advanceUntilIdle()
 
         // Then
@@ -93,7 +93,7 @@ class FruitsListViewModelTest {
         val viewModel = createViewModel()
 
         // When
-        viewModel.fetchFruits()
+        viewModel.getFruits()
         advanceUntilIdle()
 
         // Then
