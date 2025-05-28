@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.challenge.R
+import com.challenge.shopping.fruits.common.utils.isEmptyImageBitmap
 
 @Composable
 fun FruitImageOrPlaceholder(image: ImageBitmap?, contentDescription: String) {
@@ -38,6 +39,3 @@ fun FruitImageOrPlaceholder(image: ImageBitmap?, contentDescription: String) {
         }
     }
 }
-
-private fun isEmptyImageBitmap(image: ImageBitmap): Boolean =
-    image.width == 1 && image.height == 1

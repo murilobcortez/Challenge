@@ -20,7 +20,7 @@ import org.mockito.kotlin.whenever
 import kotlin.test.assertEquals
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class FruitsListViewModelMockitoTest {
+class FruitsListViewModelTest {
     private val testDispatcher = StandardTestDispatcher()
 
     private lateinit var getAllFruitsUseCase: GetAllFruitsUseCase

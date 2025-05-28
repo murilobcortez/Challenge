@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.challenge.shopping.fruits.common.domain.onError
 import com.challenge.shopping.fruits.common.domain.onSuccess
 import com.challenge.shopping.fruits.common.presentation.toUiText
+import com.challenge.shopping.fruits.common.utils.emptyImageBitmap
 import com.challenge.shopping.fruits.domain.usecase.GetFruitImageUseCase
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
 import kotlinx.coroutines.CoroutineDispatcher
@@ -33,13 +34,13 @@ class FruitsListViewModel(
     val state: StateFlow<FruitsListState> = _state
 
     init {
-        fetchFruitsIfNeeded()
+        getFruitsIfNeeded()
         observeFruitsAddedToCart()
     }
 
-    private fun fetchFruitsIfNeeded() {
+    private fun getFruitsIfNeeded() {
         if (cachedFruits.isEmpty()) {
-            fetchFruits()
+            getFruits()
         }
     }
 
@@ -56,7 +57,7 @@ class FruitsListViewModel(
         }
     }
 
-    fun fetchFruits() {
+    fun getFruits() {
         _state.update {
             it.copy(
                 isLoading = true
@@ -73,7 +74,7 @@ class FruitsListViewModel(
                             fruits = fruitsList
                         )
                     }
-                    fetchFruitsImages(fruitsList)
+                    getFruitsImages(fruitsList)
                 }
                 .onError { error ->
                     _state.update {
@@ -87,40 +88,34 @@ class FruitsListViewModel(
         }
     }
 
-    fun fetchFruitsImages(fruitsList : List<Fruit>){
-       fruitsList.forEach { fruit ->
+    fun getFruitsImages(fruitsList : List<Fruit>){
+        fruitsList.forEach { fruit ->
             viewModelScope.launch(dispatcher) {
                 getFruitImageUseCase(fruit.name)
                     .onSuccess { fruitImage ->
-                        _state.update { currentState ->
-
-                            val updatedFruits = currentState.fruits.map { currentFruit ->
-                                if (currentFruit.name == fruit.name) {
-                                    currentFruit.copy(image = fruitImage)
-                                } else {
-                                    currentFruit
-                                }
-                            }
-                            cachedFruits = updatedFruits
-
-                            currentState.copy(fruits = updatedFruits)
-                        }
+                        updateFruitImageOnStateAndCache(fruit, fruitImage)
                     }
                     .onError {
-                        _state.update { currentState ->
-                            val updatedFruits = currentState.fruits.map { currentFruit ->
-                                if (currentFruit.name == fruit.name) {
-                                    currentFruit.copy(image = ImageBitmap(1, 1))
-                                } else {
-                                    currentFruit
-                                }
-                            }
-                            cachedFruits = updatedFruits
-
-                            currentState.copy(fruits = updatedFruits)
-                        }
+                        updateFruitImageOnStateAndCache(fruit)
                     }
             }
+        }
+    }
+
+    private fun updateFruitImageOnStateAndCache(fruit: Fruit, fruitImage: ImageBitmap? = null){
+        _state.update { currentState ->
+            val updatedFruits = currentState.fruits.map { currentFruit ->
+                if (currentFruit.name == fruit.name) {
+                    fruitImage?.let {
+                        currentFruit.copy(image = fruitImage)
+                    } ?: currentFruit.copy(image = emptyImageBitmap())
+                } else {
+                    currentFruit
+                }
+            }
+            cachedFruits = updatedFruits
+
+            currentState.copy(fruits = updatedFruits)
         }
     }
 

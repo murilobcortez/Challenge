@@ -13,7 +13,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import kotlin.test.assertEquals
 
-class FruitsRepositoryIntegrationTest {
+class FruitsRepositoryImplIntegrationTest {
 
     private fun createRepository(
         fruitsApiService: FruitsApiService = mock(),
