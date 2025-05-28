@@ -11,7 +11,6 @@ import com.challenge.shopping.fruits.common.presentation.toUiText
 import com.challenge.shopping.fruits.domain.usecase.GetFruitImageUseCase
 import com.challenge.shopping.fruits.domain.usecase.GetFruitsOnCartUseCase
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,7 +23,7 @@ class FruitsListViewModel(
     private val getAllFruitsUseCase: GetAllFruitsUseCase,
     private val getFruitsOnCartUseCase: GetFruitsOnCartUseCase,
     private val getFruitImageUseCase: GetFruitImageUseCase,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private var cachedFruits = emptyList<Fruit>()

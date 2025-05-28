@@ -44,7 +44,8 @@ class FruitsListViewModelMockitoTest {
         FruitsListViewModel(
             getAllFruitsUseCase,
             getFruitsOnCartUseCase,
-            getFruitImageUseCase
+            getFruitImageUseCase,
+            testDispatcher
         )
 
     @Test

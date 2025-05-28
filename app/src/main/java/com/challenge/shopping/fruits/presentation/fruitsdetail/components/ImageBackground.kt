@@ -85,48 +85,7 @@ fun ImageBackground(
                 shape = RoundedCornerShape(8.dp),
                 elevation = CardDefaults.elevatedCardElevation(15.dp),
             ) {
-                    if (image != null) {
-                        if(image.width == 1 && image.height == 1) {
-                            Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
-                            ){
-                                Image(
-                                    painter = painterResource(R.drawable.ic_image_not_found),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .size(64.dp)
-                                        .clip(RoundedCornerShape(8.dp))
-                                )
-                            }
-                        } else {
-                            Box {
-                                Image(
-                                    bitmap = image,
-                                    contentDescription = stringResource(
-                                        R.string.fruit_detail_screen_fruit_image
-                                    ),
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .background(Color.Transparent),
-                                    contentScale = ContentScale.Crop
-                                )
-                            }
-                        }
-                    } else {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ){
-                            Image(
-                                painter = painterResource(R.drawable.ic_image_not_found),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .size(64.dp)
-                                    .clip(RoundedCornerShape(8.dp))
-                            )
-                        }
-                }
+                FruitImageOrPlaceholder(image)
             }
             content()
         }

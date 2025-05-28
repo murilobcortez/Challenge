@@ -9,7 +9,6 @@ import com.challenge.shopping.fruits.domain.usecase.AddFruitOnCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.DeleteFruitFromCartUseCase
 import com.challenge.shopping.fruits.domain.usecase.IsFruitOnCartUseCase
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -21,7 +20,7 @@ class FruitsDetailViewModel(
     private val deleteFruitFromCartUseCase: DeleteFruitFromCartUseCase,
     private val addFruitOnCartUseCase: AddFruitOnCartUseCase,
     private val isFruitOnCartUseCase: IsFruitOnCartUseCase,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val dispatcher: CoroutineDispatcher,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 

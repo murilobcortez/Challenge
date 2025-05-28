@@ -35,16 +35,12 @@ fun FruitsDetailScreenRoot(
     FruitsDetailScreen(
         state = state,
         onAction = { action ->
-            when(action) {
-                is FruitsDetailAction.OnBackClick -> onBackClick()
-                else -> Unit
-            }
+            if (action is FruitsDetailAction.OnBackClick) onBackClick()
             viewModel.onAction(action)
         }
     )
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun FruitsDetailScreen(
     state: FruitsDetailState,
@@ -75,6 +71,7 @@ fun FruitsDetailScreen(
                     )
                     Column(
                         modifier = Modifier
+                            .fillMaxWidth()
                             .padding(top = 8.dp)
                             .align(Alignment.CenterHorizontally),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
