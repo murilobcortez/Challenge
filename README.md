@@ -6,7 +6,7 @@
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Arquitetura](#arquitetura)
 - [Mapeamento de Endpoints](#mapeamento-de-endpoints)
-- [Cenários de Teste](#cenários-de-teste)
+- [Exemplo de Cenário de Teste](#exemplo-de-cenário-de-teste)
 
 # Motivação de Negócio
 
@@ -134,7 +134,7 @@ BASE64 raw da imagem .PNG
 
 ---
 
-## CENÁRIOS DE TESTE (Exemplo)
+## EXEMPLO DE CENÁRIO DE TESTE
 
 ## Tela 1: Listagem de Frutas
 
