@@ -12,8 +12,11 @@
 
 ## Hipótese
 
-O time de negócio do iFood deseja validar a hipótese de que **itens exibidos com fotos são mais comprados do que itens sem foto (mesmo que essas fotos sejam geradas por IA)**.  
-Para esse experimento, será utilizada a tab **Feira** da seção **Mercados**, onde será possível comparar o comportamento dos usuários diante das duas experiências de exibição de produtos.
+O time de negócios do iFood notou que estabelecimentos menores não estavam cadastrando fotos dos seus produtos e existe uma suposição de que isso pode estar impactando negativamente suas vendas e indiretamente gerando menos receita para a empresa.  
+
+Portanto, desejam validar a hipótese de que **itens exibidos com fotos são mais comprados do que itens sem foto (mesmo que essas fotos sejam geradas por IA)**.  
+
+Para esse experimento, será utilizada a tab **Feira** da seção **Mercados**, onde será possível comparar o comportamento dos usuários diante das duas experiências de exibição de produtos.  
 
 ## Descrição do Experimento
 
