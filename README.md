@@ -148,6 +148,7 @@ BASE64 raw da imagem .PNG
 
 Validar se a listagem de frutas (textos e imagens) é exibida corretamente ao usuário.  
 Validar se a listagem de frutas (textos) é exibida corretamente ao usuário quando as imagens não foram geradas.  
+Validar que um placeholder é exibido no lugar da imagem quando ela não é carregada corretamente.  
 Validar se a listagem de frutas exibe mensagem de erro quando textos dos itens estão indisponíveis.
 
 ### Pré-condições
@@ -181,9 +182,6 @@ Validar se a listagem de frutas exibe mensagem de erro quando textos dos itens e
 
 - **Remover fruta do carrinho:**  
   Garante que a fruta selecionada é deletada do carrinho corretamente e atualização da UI.
-
-- **Geração de imagem IA:**  
-  Valida que a imagem gerada é exibida corretamente ao usuário. Valida que um placeholder é exibido caso a imagem não seja gerada corretamente.
 
 ---
 
