@@ -2,7 +2,7 @@
 
 # Sumário
 
-- [Motivação de Negócio (Problema e Solução)](#motivação-de-negócio)
+- [Motivação de Negócio (Hipótese, Descrição, Métricas e Solução)](#motivação-de-negócio)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Arquitetura](#arquitetura)
 - [Mapeamento de Endpoints](#mapeamento-de-endpoints)
@@ -12,13 +12,16 @@
 
 ## Hipótese
 
-O time de negócio do iFood deseja validar a hipótese de que **itens exibidos com fotos são mais comprados do que itens sem foto (mesmo que essas fotos sejam geradas por IA)**. Para esse experimento, será utilizada a tab "Feira" da seção Mercados, onde será possível comparar o comportamento dos usuários diante das duas experiências de exibição de produtos.
+O time de negócio do iFood deseja validar a hipótese de que **itens exibidos com fotos são mais comprados do que itens sem foto (mesmo que essas fotos sejam geradas por IA)**.  
+Para esse experimento, será utilizada a tab **Feira** da seção **Mercados**, onde será possível comparar o comportamento dos usuários diante das duas experiências de exibição de produtos.
 
 ## Descrição do Experimento
 
-O experimento consiste em exibir, para uma parcela dos usuários, a listagem de frutas com imagens geradas por IA (baseadas no nome de cada fruta), enquanto outro grupo de controle visualizará a listagem tradicional sem imagens. A exibição das imagens será controlada por feature flag, permitindo comparações diretas entre os grupos.
+O experimento consiste em exibir, para uma parcela dos usuários, a listagem de frutas com imagens geradas por IA (baseadas no nome de cada fruta), enquanto outro grupo de controle visualizará a listagem tradicional sem imagens.
 
-Durante o experimento, serão rastreadas as interações dos usuários, especialmente os cliques no botão **"Add to Cart"**. Os dados coletados permitirão avaliar o impacto da presença das imagens no engajamento e na conversão de itens para o carrinho.
+A exibição das imagens será controlada por feature flag, permitindo comparações diretas entre os grupos.
+
+Durante o experimento, serão rastreadas as interações dos usuários, especialmente os cliques no botão **"Add to Cart"**.
 
 ## Métricas de Teste Relevantes
 
@@ -30,8 +33,8 @@ Para avaliar o impacto do experimento, serão acompanhadas as seguintes métrica
 
 ## Solução
 Para isso, foi criado um projeto que possui uma listagem de frutas com imagens geradas por IA e que podem ser adicionadas a um carrinho, conforme o seguinte esquema:
-A tab "Fruits" (Listagem de Frutas) recebe lista de frutas de endpoint externo e grava na memória.
-A tab "Cart" (Listagem do Carrinho) exibe os itens salvos de forma local.
+- A tab **Fruits** (Listagem de Frutas) recebe lista de frutas e imagens de endpoints externos.
+- A tab **Cart** (Listagem do Carrinho) exibe os itens adicionados ao carrinho persistidos de forma local.
 
  <p align="center">
   <img alt="Listagem de Frutas" src="images/ListagemdeFrutas.png" width="45%">
@@ -48,7 +51,7 @@ A tab "Cart" (Listagem do Carrinho) exibe os itens salvos de forma local.
 - **Koin** - Injeção de dependência
 - **Room** - Persistência local
 - **Retrofit** - Consumo de APIs REST
-- **JUnit5, Mockito** — Testes unitários (UseCase), testes  de integração (Repository) e mocks
+- **JUnit5, Mockito** - Testes unitários (UseCase), testes  de integração (Repository) e mocks
 - **Jetpack Compose Testing, JUnit4** - Testes instrumentados (Screen)
 
 ---
