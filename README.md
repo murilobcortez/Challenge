@@ -11,14 +11,25 @@
 # Motivação de Negócio
 
 ## Hipótese
-O time de negócio do iFood gostaria de testar a hipótese de que itens contendo fotos são mais comprados do que itens sem foto. Para testar essa hipótese foi escolhidos a tab de Feira dos Mercados.
 
-Métrica: itens adicionados ao carrinho
+O time de negócio do iFood deseja validar a hipótese de que **itens exibidos com fotos são mais comprados do que itens sem foto (mesmo que essas fotos sejam geradas por IA)**. Para esse experimento, será utilizada a tab "Feira" da seção Mercados, onde será possível comparar o comportamento dos usuários diante das duas experiências de exibição de produtos.
+
+## Descrição do Experimento
+
+O experimento consiste em exibir, para uma parcela dos usuários, a listagem de frutas com imagens geradas por IA (baseadas no nome de cada fruta), enquanto outro grupo de controle visualizará a listagem tradicional sem imagens. A exibição das imagens será controlada por feature flag, permitindo comparações diretas entre os grupos.
+
+Durante o experimento, serão rastreadas as interações dos usuários, especialmente os cliques no botão **"Add to Cart"**. Os dados coletados permitirão avaliar o impacto da presença das imagens no engajamento e na conversão de itens para o carrinho.
+
+## Métricas de Teste Relevantes
+
+Para avaliar o impacto do experimento, serão acompanhadas as seguintes métricas:
+
+- **Taxa de Adição ao Carrinho**: Proporção de usuários que adicionam pelo menos um item ao carrinho.
+- **Número Médio de Itens Adicionados por Usuário**: Quantidade média de itens adicionados ao carrinho por usuário em cada grupo.
+
 
 ## Solução
-
-Para isso, foi desenvolvida uma listagem de itens com as imagens geradas por IA com base no nome de cada fruta e posteriormente serão trackeados os cliques em "Add to Cart". O release será controlado por feature flag e o time negócios irá comparar as métricas entre as duas versões.
-
+Para isso, foi criado um projeto que possui uma listagem de frutas com imagens geradas por IA e que podem ser adicionadas a um carrinho, conforme o seguinte esquema:
 A tab "Fruits" (Listagem de Frutas) recebe lista de frutas de endpoint externo e grava na memória.
 A tab "Cart" (Listagem do Carrinho) exibe os itens salvos de forma local.
 
@@ -32,12 +43,13 @@ A tab "Cart" (Listagem do Carrinho) exibe os itens salvos de forma local.
 
 ## Tecnologias Utilizadas
 
-- **Kotlin** — Linguagem de programação
-- **Jetpack Compose** — UI
-- **Koin** — Injeção de dependência
-- **Room** — Persistência local
-- **Retrofit** — Consumo de APIs REST
-- **JUnit, Mockito** — Testes unitários (usecase, viewmodel), testes integrados (Repository), testes instrumentados (screen) e mocks
+- **Kotlin** - Linguagem de programação
+- **Jetpack Compose** - UI
+- **Koin** - Injeção de dependência
+- **Room** - Persistência local
+- **Retrofit** - Consumo de APIs REST
+- **JUnit5, Mockito** — Testes unitários (UseCase), testes  de integração (Repository) e mocks
+- **Jetpack Compose Testing, JUnit4** - Testes instrumentados (Screen)
 
 ---
 
@@ -119,7 +131,7 @@ BASE64 raw da imagem .PNG
 
 ---
 
-## CENÁRIOS DE TESTE
+## CENÁRIOS DE TESTE (Exemplo)
 
 ## Tela 1: Listagem de Frutas
 
