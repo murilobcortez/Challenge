@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.challenge.shopping.fruits.common.presentation.DesertWhite
+import com.challenge.shopping.fruits.common.presentation.OffWhite
 import com.challenge.shopping.fruits.common.presentation.Red
 import com.challenge.shopping.fruits.presentation.fruitslist.FruitsTab
 
@@ -29,7 +29,7 @@ fun FruitTabRow(
             .padding(top = 12.dp)
             .widthIn(max = 700.dp)
             .fillMaxWidth(),
-        containerColor = DesertWhite,
+        containerColor = OffWhite,
         indicator = { tabPositions ->
             TabRowDefaults.SecondaryIndicator(
                 color = Red,

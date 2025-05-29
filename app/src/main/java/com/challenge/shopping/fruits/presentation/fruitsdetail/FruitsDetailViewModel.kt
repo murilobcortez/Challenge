@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class FruitsDetailViewModel(
+internal class FruitsDetailViewModel(
     private val deleteFruitFromCartUseCase: DeleteFruitFromCartUseCase,
     private val addFruitOnCartUseCase: AddFruitOnCartUseCase,
     private val isFruitOnCartUseCase: IsFruitOnCartUseCase,

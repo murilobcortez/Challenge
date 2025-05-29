@@ -32,8 +32,10 @@ val dataModule = module {
     // Remote
     single(named("FruitsApi")) { provideRetrofit(FRUITS_API_BASE_URL) }
     single { get<retrofit2.Retrofit>(named("FruitsApi")).create(FruitsApiService::class.java) }
+
     single(named("FruitImageApi")) { provideRetrofit(FRUIT_IMAGE_API_BASE_URL) }
     single { get<retrofit2.Retrofit>(named("FruitImageApi")).create(FruitImageApiService::class.java) }
+
     single<FruitsRemoteDataSource> { FruitsRemoteDataSourceImpl(get(), get()) }
     single<FruitsRepository> { FruitsRepositoryImpl(get(), get()) }
 

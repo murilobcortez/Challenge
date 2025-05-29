@@ -4,7 +4,7 @@ import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.common.domain.EmptyResult
 import com.challenge.shopping.fruits.domain.repository.FruitsRepository
 
-class DeleteFruitFromCartUseCase(
+internal class DeleteFruitFromCartUseCase(
     private val repository: FruitsRepository
 ) {
     suspend operator fun invoke(id: Int): EmptyResult<DataError.Local>{

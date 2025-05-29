@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import com.challenge.shopping.fruits.domain.model.Fruit
 
 object TestStub {
-    fun generateFruitsList(image: ImageBitmap? = null): List<Fruit> {
+    internal fun generateFruitsList(image: ImageBitmap? = null): List<Fruit> {
         return listOf(
             Fruit(
                 id = 6,
@@ -27,7 +27,7 @@ object TestStub {
         )
     }
 
-    fun generateFruit(image: ImageBitmap? = null): Fruit {
+    internal fun generateFruit(image: ImageBitmap? = null): Fruit {
         return Fruit(
             id = 6,
             name = "Apple",

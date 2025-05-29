@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.challenge.shopping.fruits.domain.model.Fruit
 
 @Composable
-fun FruitListItem(
+internal fun FruitListItem(
     fruit: Fruit,
     onClick: () -> Unit
 ) {

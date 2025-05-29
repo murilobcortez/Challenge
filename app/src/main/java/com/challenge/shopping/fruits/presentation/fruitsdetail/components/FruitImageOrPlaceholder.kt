@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.challenge.R
 
 @Composable
-fun FruitImageOrPlaceholder(image: ImageBitmap?) {
+internal fun FruitImageOrPlaceholder(image: ImageBitmap?) {
     if (image == null || isEmptyImageBitmap(image)) {
         Box(
             modifier = Modifier.fillMaxSize(),

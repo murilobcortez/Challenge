@@ -2,7 +2,7 @@ package com.challenge.shopping.fruits.domain.model
 
 import androidx.compose.ui.graphics.ImageBitmap
 
-data class Fruit(
+internal data class Fruit(
     val id: Int,
     val image: ImageBitmap?,
     val name: String,

@@ -16,7 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.challenge.R
-import com.challenge.shopping.fruits.common.presentation.DesertWhite
+import com.challenge.shopping.fruits.common.presentation.OffWhite
 import com.challenge.shopping.fruits.common.presentation.Red
 import com.challenge.shopping.fruits.domain.model.Fruit
 import com.challenge.shopping.fruits.presentation.fruitslist.components.CartPage
@@ -30,7 +30,7 @@ enum class FruitsTab(val titleRes: Int) {
 }
 
 @Composable
-fun FruitsListScreenRoot(
+internal fun FruitsListScreenRoot(
     viewModel: FruitsListViewModel = koinViewModel(),
     onFruitClick: (Fruit) -> Unit,
 ) {
@@ -46,7 +46,7 @@ fun FruitsListScreenRoot(
 }
 
 @Composable
-fun FruitListScreen(
+internal fun FruitListScreen(
     state: FruitsListState,
     onAction: (FruitsListAction) -> Unit,
 ) {
@@ -76,7 +76,7 @@ fun FruitListScreen(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
-            color = DesertWhite
+            color = OffWhite
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 FruitTabRow(

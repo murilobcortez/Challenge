@@ -7,7 +7,7 @@ import com.challenge.shopping.fruits.common.domain.DataError
 import com.challenge.shopping.fruits.common.domain.EmptyResult
 import kotlinx.coroutines.flow.Flow
 
-interface FruitsRepository {
+internal interface FruitsRepository {
     // Remote
     suspend fun getAllFruits(): Result<List<Fruit>, DataError>
     suspend fun getFruitImageByName(fruitName: String): Result<ImageBitmap, DataError>

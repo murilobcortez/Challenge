@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import com.challenge.shopping.fruits.domain.model.Fruit
 
 @Composable
-fun FruitList(
+internal fun FruitList(
     fruits: List<Fruit>,
     onFruitClick: (Fruit) -> Unit,
     modifier: Modifier = Modifier,

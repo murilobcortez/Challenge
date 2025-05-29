@@ -12,7 +12,7 @@ import com.challenge.shopping.fruits.data.model.FruitEntity
 )
 
 @TypeConverters(ImageConverter::class)
-abstract class FruitsLocalDatabase: RoomDatabase() {
+internal abstract class FruitsLocalDatabase: RoomDatabase() {
     abstract fun fruitsDao(): FruitsLocalDataSource
 
     companion object {

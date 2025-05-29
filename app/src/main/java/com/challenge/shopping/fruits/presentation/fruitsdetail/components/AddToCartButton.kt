@@ -17,7 +17,7 @@ import com.challenge.R
 import com.challenge.shopping.fruits.common.presentation.Red
 
 @Composable
-fun AddToCartButton(
+internal fun AddToCartButton(
     isAddedToCart: Boolean,
     onClick: () -> Unit
 ) {

@@ -26,20 +26,20 @@ import com.challenge.shopping.fruits.presentation.fruitslist.FruitsListViewModel
 import org.koin.androidx.compose.KoinAndroidContext
 import org.koin.compose.viewmodel.koinViewModel
 
-class MainActivity : ComponentActivity() {
+internal class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             KoinAndroidContext {
-                MainApp()
+                FruitsNavHost()
             }
         }
     }
 }
 
 @Composable
-fun MainApp() {
+private fun FruitsNavHost() {
     MaterialTheme {
         val navController = rememberNavController()
         NavHost(

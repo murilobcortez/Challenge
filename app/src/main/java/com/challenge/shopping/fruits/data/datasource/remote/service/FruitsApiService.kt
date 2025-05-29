@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 private const val GET_ALL_FRUITS_ENDPOINT = "fruit/all"
 
-interface FruitsApiService {
+internal interface FruitsApiService {
     @GET(GET_ALL_FRUITS_ENDPOINT)
     suspend fun getAllFruits(): Response<List<FruitResponse>>
 }

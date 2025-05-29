@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class FruitsListViewModel(
+internal class FruitsListViewModel(
     private val getAllFruitsUseCase: GetAllFruitsUseCase,
     private val getFruitsOnCartUseCase: GetFruitsOnCartUseCase,
     private val getFruitImageUseCase: GetFruitImageUseCase,

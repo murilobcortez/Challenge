@@ -6,7 +6,7 @@ import com.challenge.shopping.fruits.common.utils.emptyImageBitmap
 import com.challenge.shopping.fruits.domain.model.Fruit
 import com.challenge.shopping.fruits.domain.repository.FruitsRepository
 
-class AddFruitOnCartUseCase(
+internal class AddFruitOnCartUseCase(
     private val repository: FruitsRepository
 ) {
     suspend operator fun invoke(fruit: Fruit): EmptyResult<DataError.Local>{

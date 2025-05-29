@@ -7,7 +7,7 @@ import com.challenge.shopping.fruits.data.model.FruitEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface FruitsLocalDataSource {
+internal interface FruitsLocalDataSource {
 
     @Query("SELECT * FROM FruitEntity")
     fun getAllFruits(): Flow<List<FruitEntity>>

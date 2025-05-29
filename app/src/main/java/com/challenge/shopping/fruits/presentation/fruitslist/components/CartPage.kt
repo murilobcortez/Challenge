@@ -14,7 +14,7 @@ import com.challenge.R
 import com.challenge.shopping.fruits.domain.model.Fruit
 
 @Composable
-fun CartPage(
+internal fun CartPage(
     fruitsInCart: List<Fruit>,
     onFruitClick: (Fruit) -> Unit,
     listState: LazyListState

@@ -26,7 +26,7 @@ import com.challenge.shopping.fruits.presentation.fruitsdetail.components.FruitD
 import com.challenge.shopping.fruits.presentation.fruitsdetail.components.ImageBackground
 
 @Composable
-fun FruitsDetailScreenRoot(
+internal fun FruitsDetailScreenRoot(
     viewModel: FruitsDetailViewModel,
     onBackClick: () -> Unit
 ) {
@@ -42,7 +42,7 @@ fun FruitsDetailScreenRoot(
 }
 
 @Composable
-fun FruitsDetailScreen(
+internal fun FruitsDetailScreen(
     state: FruitsDetailState,
     onAction: (FruitsDetailAction) -> Unit
 ){

@@ -14,7 +14,7 @@ import com.challenge.R
 import com.challenge.shopping.fruits.common.utils.isEmptyImageBitmap
 
 @Composable
-fun FruitImageOrPlaceholder(image: ImageBitmap?, contentDescription: String) {
+internal fun FruitImageOrPlaceholder(image: ImageBitmap?, contentDescription: String) {
     when {
         image == null -> {
             CircularProgressIndicator(modifier = Modifier.size(32.dp))

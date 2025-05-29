@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 import retrofit2.Response
 import java.io.File
 
-class FruitsApiServiceMock(val jsonResponsePathFile: String) : FruitsApiService {
+internal class FruitsApiServiceMock(val jsonResponsePathFile: String) : FruitsApiService {
     override suspend fun getAllFruits(): Response<List<FruitResponse>> {
         val json = File(jsonResponsePathFile).readText()
         val result = Json { ignoreUnknownKeys = true }.decodeFromString<List<FruitResponse>>(json)

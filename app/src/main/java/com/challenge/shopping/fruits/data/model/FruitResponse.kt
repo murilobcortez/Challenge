@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FruitResponse(
+internal data class FruitResponse(
     @SerialName("id") val id: Int,
     @SerialName("name") val name: String,
     @SerialName("family") val family: String? = null,

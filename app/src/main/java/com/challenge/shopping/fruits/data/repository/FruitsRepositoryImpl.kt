@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.map
 
 private const val PAGINATION_ITEMS_LIMIT = 20
 
-class FruitsRepositoryImpl(
+internal class FruitsRepositoryImpl(
     private val localDataSource: FruitsLocalDataSource,
     private val remoteDataSource: FruitsRemoteDataSource
 ): FruitsRepository {

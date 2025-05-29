@@ -9,7 +9,7 @@ import java.text.NumberFormat
 import java.util.Locale
 import kotlin.random.Random
 
-fun FruitResponse.toFruit(): Fruit {
+internal fun FruitResponse.toFruit(): Fruit {
     return Fruit(
         id = id,
         name = name,
@@ -21,7 +21,7 @@ fun FruitResponse.toFruit(): Fruit {
     )
 }
 
-fun FruitEntity.toFruit(): Fruit {
+internal fun FruitEntity.toFruit(): Fruit {
     return Fruit(
         id = id,
         name = name,
@@ -33,7 +33,7 @@ fun FruitEntity.toFruit(): Fruit {
     )
 }
 
-fun Fruit.toFruitEntity(): FruitEntity {
+internal fun Fruit.toFruitEntity(): FruitEntity {
     return FruitEntity(
         id = id,
         name = name,

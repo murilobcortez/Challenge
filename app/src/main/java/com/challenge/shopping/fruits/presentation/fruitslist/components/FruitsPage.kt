@@ -15,7 +15,7 @@ import com.challenge.R
 import com.challenge.shopping.fruits.domain.model.Fruit
 
 @Composable
-fun FruitsPage(
+internal fun FruitsPage(
     isLoading: Boolean,
     errorMessage: String?,
     fruits: List<Fruit>,

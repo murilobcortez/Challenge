@@ -12,7 +12,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FruitDetailItem(
+internal fun FruitDetailItem(
     titleText: String,
     descriptionText: String
 ) {
