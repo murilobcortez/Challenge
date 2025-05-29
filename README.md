@@ -157,11 +157,11 @@ Validar se a listagem de frutas exibe mensagem de erro quando textos dos itens e
 
 ### Passos do Teste
 
-| Cenário | Ação                                 | Dados de Entrada     | Resultado Esperado                               |
-|-------|--------------------------------------|---------------------|--------------------------------------------------|
-| 1     | Acessar tela de listagem com carregamento de textos e imagens               |                    | Listagem com itens e imagens exibida conforme especificações do Figma                          | 
-| 2     | Acessar tela de listagem com carregamento de textos e sem imagens geradas   |     | Listagem com itens e deve ser exibida conforme especificações do Figma. Tracking de clique para teste A/B não deve ser disparado.  |
-| 3     | Informar usuário ou senha inválidos  |  | Mensagem de erro exibida corretamente conforme Figma                        |
+| Cenário | Ação                                 | Dados de Entrada     | Resultado Esperado                                                                                                                                          |
+|-------|--------------------------------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Acessar tela de listagem com carregamento de textos e imagens               |                    | Listagem com itens e imagens exibida conforme especificações do Figma                                                                                       | 
+| 2     | Acessar tela de listagem com carregamento de textos e sem imagens geradas   |     | Listagem com itens e imagens com placeholder devem ser exibidos conforme especificações do Figma. Tracking de clique para teste A/B não deve ser disparado. |
+| 3     | Informar usuário ou senha inválidos  |  | Mensagem de erro exibida corretamente conforme Figma                                                                                                        |
 
 ### Pós-condições
 
